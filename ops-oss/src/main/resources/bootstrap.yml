@@ -1,0 +1,16 @@
+server:
+  session-timeout: 1800
+  port: 12200
+spring:
+  application:
+    name: opsOss
+  cloud:
+    polaris:
+      address: grpc://10.0.0.25:8091
+      namespace: default
+      enabled: true
+      discovery:
+        enabled: true
+        register: true
+        heartbeat:
+          enabled: true

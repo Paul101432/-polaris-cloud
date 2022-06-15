@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>org.springframework.cloud</groupId>
+        <artifactId>spring-cloud-build</artifactId>
+        <version>2.3.1.RELEASE</version>
+        <relativePath/>
+    </parent>
+    <groupId>top.hrzhen</groupId>
+    <artifactId>polaris-cloud</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0-SNAPSHOT</version>
+    <modules>
+        <module>bus-user</module>
+        <module>ops-oss</module>
+    </modules>
+
+
+    <properties>
+        <polaris.cloud.version>1.5.0-Hoxton.SR9</polaris.cloud.version>
+        <spring.cloud.version>Hoxton.SR9</spring.cloud.version>
+
+        <!--<polaris.cloud.version>1.4.3-2021.0.2</polaris.cloud.version>
+        <spring.cloud.version>2021.0.2</spring.cloud.version>-->
+    </properties>
+
+    <dependencies>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-openfeign</artifactId>
+        </dependency>
+
+
+        <dependency>
+            <groupId>com.tencent.cloud</groupId>
+            <artifactId>spring-cloud-tencent-polaris-loadbalancer</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.tencent.cloud</groupId>
+            <artifactId>spring-cloud-starter-tencent-polaris-config</artifactId><!--配置中心-->
+        </dependency>
+        <dependency>
+            <groupId>com.tencent.cloud</groupId>
+            <artifactId>spring-cloud-starter-tencent-polaris-discovery</artifactId><!--服务发现-->
+        </dependency>
+        <dependency>
+            <groupId>com.tencent.cloud</groupId>
+            <artifactId>spring-cloud-starter-tencent-polaris-ratelimit</artifactId><!--限流-->
+        </dependency>
+        <dependency>
+            <groupId>com.tencent.cloud</groupId>
+            <artifactId>spring-cloud-starter-tencent-polaris-circuitbreaker</artifactId><!--熔断-->
+        </dependency>
+
+
+        <!-- Polaris dependencies start -->
+        <dependency>
+            <groupId>com.tencent.polaris</groupId>
+            <artifactId>polaris-configuration-factory</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>com.tencent.polaris</groupId>
+                    <artifactId>router-rule</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>com.tencent.polaris</groupId>
+                    <artifactId>router-nearby</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>com.tencent.polaris</groupId>
+                    <artifactId>router-metadata</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>com.tencent.polaris</groupId>
+                    <artifactId>router-canary</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>com.tencent.polaris</groupId>
+                    <artifactId>router-set</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>com.tencent.polaris</groupId>
+                    <artifactId>router-isolated</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>com.tencent.polaris</groupId>
+                    <artifactId>router-healthy</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <!-- Polaris dependencies end -->
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.24</version>
+        </dependency>
+
+    </dependencies>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.tencent.cloud</groupId>
+                <artifactId>spring-cloud-tencent-dependencies</artifactId>
+                <version>${polaris.cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring.cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+
+</project>
